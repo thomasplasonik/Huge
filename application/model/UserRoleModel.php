@@ -62,4 +62,30 @@ class UserRoleModel
 
         return false;
     }
+
+    public static function getUserRoles() {
+        $database = databaseFactory::getFactory()->getConnection();
+    
+        $sql = "SELECT type_id, type_name FROM user_types";
+        $query = $database->prepare($sql);
+        $query->execute();
+    
+        $all_user_types = array();
+    
+        foreach ($query->fetchAll() as $type) {
+
+            // all elements of array passed to Filter::XSSFilter for XSS sanitation, have a look into
+            // application/core/Filter.php for more info on how to use. Removes (possibly bad) JavaScript etc from
+            // the user's values
+            array_walk_recursive($type, 'Filter::XSSFilter');
+            
+            $all_user_types[$type->type_id] = new stdClass();
+            $all_user_types[$type->type_id]->type_id = $type->type_id;
+            $all_user_types[$type->type_id]->type_name = $type->type_name;
+        }
+    
+        return $all_user_types;
+    }
+    
 }
+

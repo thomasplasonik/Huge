@@ -23,6 +23,7 @@
                     <td>Activated ?</td>
                     <td>Link to user's profile</td>
                     <td>suspension Time in days</td>
+                    <td>Group</td>
                     <td>Soft delete</td>
                     <td>Submit</td>
                 </tr>
@@ -43,6 +44,15 @@
                         </td>
                         <form action="<?= config::get("URL"); ?>admin/actionAccountSettings" method="post">
                             <td><input type="number" name="suspension" /></td>
+                            <td>
+                                <select name="user_group">
+                                <?php foreach ($this->user_types as $user_type) { ?>
+                                    <option value="<?= $user_type->type_id ?>" <?= ($user->user_account_type == $user_type->type_id ? 'selected' : '') ?>>
+                                    <?= $user_type->type_name ?>
+                                    </option>
+                                    <?php } ?>
+                                </select>
+                            </td>
                             <td><input type="checkbox" name="softDelete" <?php if ($user->user_deleted) { ?> checked <?php } ?> /></td>
                             <td>
                                 <input type="hidden" name="user_id" value="<?= $user->user_id; ?>" />
