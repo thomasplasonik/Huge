@@ -11,7 +11,7 @@
             build things that use profile information of one or multiple/all users.
         </div>
         <div>
-            <table class="overview-table">
+            <table class="overview-table" id="profile-table">
                 <thead>
                 <tr>
                     <td>Id</td>
@@ -41,6 +41,11 @@
                     </tr>
                 <?php } ?>
             </table>
+            <script>
+                $(document).ready( function (){
+                    $ ('#profile-table').DataTable();
+                } );
+            </script>
         </div>
     </div>
 </div>

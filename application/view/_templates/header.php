@@ -8,6 +8,11 @@
     <link rel="icon" href="data:;base64,=">
     <!-- CSS -->
     <link rel="stylesheet" href="<?php echo Config::get('URL'); ?>css/style.css" />
+    <link rel="stylesheet" href="<?php echo Config::get('URL'); ?>js/DataTables/datatables.mini.css"></link>
+
+    <script src="<?php echo Config::get('URL'); ?> js/Datatables/datatables.mini.js"></script>
+    <script src="<?php echo Config::get('URL'); ?> js/jquery/jquery.mini.js"></script>
+
 </head>
 <body>
     <!-- wrapper, to center website -->
@@ -30,6 +35,12 @@
                 </li>
                 <li <?php if (View::checkForActiveController($filename, "note")) { echo ' class="active" '; } ?> >
                     <a href="<?php echo Config::get('URL'); ?>note/index">My Notes</a>
+                </li>
+                <li <?php if (View::checkForActiveController($filename, "messager")) { echo ' class="active" '; } ?> >
+                    <a href="<?php echo Config::get('URL'); ?>messager/index">Messenger</a>
+                </li>
+                <li <?php if (View::checkForActiveController($filename, "gallery")) { echo ' class="active" '; } ?> >
+                    <a href="<?php echo Config::get('URL'); ?>gallery/index">Gallery</a>
                 </li>
             <?php } else { ?>
                 <!-- for not logged in users -->

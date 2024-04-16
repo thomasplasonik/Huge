@@ -82,7 +82,7 @@ class AdminModel
     {
         $database = DatabaseFactory::getFactory()->getConnection();
 
-        $query = $database->prepare("UPDATE users SET session_id = :session_id  WHERE user_id = :user_id LIMIT 1");
+        $query = $database->prepare("CALL update_session_id(NULL, :user_id)");
         $query->execute(array(
                 ':session_id' => null,
                 ':user_id' => $userId
@@ -93,4 +93,6 @@ class AdminModel
             return true;
         }
     }
+
+    
 }
