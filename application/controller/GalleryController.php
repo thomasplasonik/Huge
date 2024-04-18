@@ -44,7 +44,7 @@ class GalleryController extends Controller
     }
 
     public function upload(){
-        if(Session:userIsLoggedIn()) {
+        if(Session::userIsLoggedIn()) {
             $image = $_FILES["image"];
             $imageData = getImagesize($image['tmp_name']);
             $mimeType = $imagedata['mime'];

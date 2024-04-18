@@ -31,13 +31,17 @@ class MessagerController extends Controller
             Redirect::home();
         }
     }
-    public static function shouldDisplayNewMessageNotification($sender, $receiver){
-        return MessageModel::hasNewMessage($receiver, $sender);
+    public static function LoadMessage($sender, $receiver){
+        return MessageModel::NewMessage($receiver, $sender);
     }
 
-    public function chat_action(){
+    //Added den Chat
+    public function chatting(){
         MessageModel::addMessage(Request::post("receiver_id"), Request::post("message"));
         Redirect::to("messager/showchat/". Request::post("receiver_id"));
     }
+
+
+    
    
 }

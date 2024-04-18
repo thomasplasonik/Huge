@@ -8,6 +8,7 @@
     <link rel="icon" href="data:;base64,=">
     <!-- CSS -->
     <link rel="stylesheet" href="<?php echo Config::get('URL'); ?>css/style.css" />
+    <link rel="stylesheet" href="<?php echo Config::get('URL'); ?>css/message.css" />
     <link rel="stylesheet" href="<?php echo Config::get('URL'); ?>js/DataTables/datatables.mini.css"></link>
 
     <script src="<?php echo Config::get('URL'); ?> js/Datatables/datatables.mini.js"></script>
